@@ -40,9 +40,7 @@ thall = st.selectbox('Thalium Stress Test Result', ('0', '1', '2', '3'))
 def predict():
     """Grab input, pass it to preprocessing and then return prediction"""
     # Dump input to a df
-    # row = np.array([age, sex, cp, trtbps, chol, fbs, restecg, thalachh, exng, oldpeak, slp, caa, thall])
-    # X = pd.DataFrame([row], columns = columns)
-    row = np.array([sex, cp, trtbps, chol, fbs, restecg, thalachh, exng, oldpeak, slp, caa, thall])
+    row = np.array([age, sex, cp, trtbps, chol, fbs, restecg, thalachh, exng, oldpeak, slp, caa, thall])
     X = pd.DataFrame([row], columns = columns)
 
     # Scale data
@@ -53,10 +51,9 @@ def predict():
     prediction = model.predict(X)[0]
 
     # Check prediction
-    # if prediction == 1:
-    #     st.error('Patient is likely have a heart attack')
-    # else:
-    #     st.success('Patient is not likely to have a heart attack')
-    st.success('Patient is not likely to have a heart attack')
+    if prediction == 1:
+        st.error('Patient is likely have a heart attack')
+    else:
+        st.success('Patient is not likely to have a heart attack')
 
 st.button('Predict', on_click = predict)

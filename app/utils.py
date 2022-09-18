@@ -5,7 +5,7 @@ import pickle
 
 # Data cols
 columns = [
-    #'age',
+    'age',
     'sex',
     'cp',
     'trtbps',
